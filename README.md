@@ -7,8 +7,8 @@ This CLI provides a wrapper around a subset of the functionality offered by the 
 
 To install the CLI:
 
-```bash
-# Work out how distribute it first lol
+```shell
+cargo install footy
 ```
 
 Commands:

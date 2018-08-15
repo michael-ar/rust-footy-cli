@@ -1,9 +1,17 @@
 [package]
+
 name = "footy"
 version = "0.1.0"
-authors = ["Michael Reynolds <michael.reynolds@paybase.io>"]
+description = "A CLI for getting football data"
+authors = ["Michael Reynolds"]
+readme = "README.md"
+repository = "https://github.com/michael-ar/rust-footy-cli"
+keywords = [ "football", "the", "beautiful", "game", "fogonthetyne" ]
+categories = [ "command-line-interface" ]
+license = "MIT"
 
 [dependencies]
+
 chrono = "0.4"
 clap = { version = "2.29", features = ["yaml"] }
 dialoguer = "0.1.0"

@@ -35,7 +35,7 @@ Options:
 
 ```shell
 footy table [options] 
-(defaults to your set league's tab;e)
+(defaults to your set league's table)
 
 Options:
   -m, --manual  Select league table to display

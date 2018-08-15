@@ -3,6 +3,7 @@ use chrono::Local;
 use std;
 use std::fs::File;
 use std::io::prelude::*;
+use std::process;
 
 pub fn format_date(date: &String) -> (String) {
     let formatted_date = Local
@@ -13,11 +14,18 @@ pub fn format_date(date: &String) -> (String) {
 }
 
 pub fn read_file(file_name: String) -> String {
-    let mut file = File::open(file_name)
-        .expect("Config file does not exist. Please run \'configure\' command");
+    let file = File::open(file_name);
+    let mut result = match file {
+        Ok(file) => file,
+        Err(_err) => {
+            eprintln!("No configuration file found, run \'footy --configure\'");
+            process::exit(2);
+        }
+    };
     let mut contents = String::new();
-    file.read_to_string(&mut contents)
-        .expect("something went wrong reading the file");;
+    result
+        .read_to_string(&mut contents)
+        .expect("Problem reading file");
     contents
 }
 

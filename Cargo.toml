@@ -7,7 +7,7 @@ authors = ["Michael Reynolds"]
 readme = "README.md"
 repository = "https://github.com/michael-ar/rust-footy-cli"
 keywords = [ "football", "the", "beautiful", "game", "fogonthetyne" ]
-categories = [ "command-line-interface" ]
+categories = [ "command-line-utilities" ]
 license = "MIT"
 
 [dependencies]

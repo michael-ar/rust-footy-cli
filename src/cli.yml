@@ -1,0 +1,31 @@
+name: footy
+version: "0.1"
+author: Michael Reynolds <michael.reynolds@paybase.io>
+about: Back of the net!
+subcommands:
+    - configure:
+        long: configure
+        short: c
+        about: Set your API token, and select your default league / team
+    - table:
+        long: table
+        short: t
+        about: Displays the league table
+        args:
+            - manual:
+                short: m
+                long: manual
+                help: Select league table to display
+    - fixtures:
+        long: fixtures
+        short: f
+        about: Displays the league fixtures
+        args:
+            - manual:
+                short: m
+                long: manual
+                help: Select league fixtures to display
+            - team:
+                short: t
+                long: team
+                help: Displays next month's fixtures of your default team

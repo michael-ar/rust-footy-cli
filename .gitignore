@@ -1,0 +1,5 @@
+/target
+**/*.rs.bk
+api_token
+league
+team

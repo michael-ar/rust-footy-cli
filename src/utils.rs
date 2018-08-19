@@ -1,9 +1,11 @@
 use chrono::prelude::*;
 use chrono::Local;
 use std;
+use std::fs;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
+use std::env;
 
 pub fn format_date(date: &String) -> (String) {
     let formatted_date = Local
@@ -14,11 +16,14 @@ pub fn format_date(date: &String) -> (String) {
 }
 
 pub fn read_file(file_name: String) -> String {
-    let file = File::open(file_name);
+    let mut path = env::home_dir().unwrap();
+    path.push("footy-cli");
+    path.push(&file_name);
+    let file = File::open(path);
     let mut result = match file {
         Ok(file) => file,
         Err(_err) => {
-            eprintln!("No configuration file found, run \'footy --configure\'");
+            eprintln!("No configuration file found, run \'footy configure\'");
             process::exit(2);
         }
     };
@@ -30,7 +35,11 @@ pub fn read_file(file_name: String) -> String {
 }
 
 pub fn write_file(name: String, content: String) -> std::io::Result<()> {
-    let mut file = File::create(name)?;
+    let mut path = env::home_dir().unwrap();
+    path.push("footy-cli");
+    fs::create_dir_all(&path)?;
+    path.push(&name);
+    let mut file = File::create(path)?;
     file.write_all(&content.into_bytes())?;
     Ok(())
 }

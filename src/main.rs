@@ -17,6 +17,7 @@ mod utils;
 
 use clap::App;
 use dialoguer::Confirmation;
+use std::env;
 use std::fs::File;
 
 use configure::{input_token, select_league, select_team};
@@ -32,7 +33,9 @@ fn main() {
     let matches = app.get_matches();
 
     if let Some(_matches) = matches.subcommand_matches("configure") {
-        let existing_token = File::open("api_token");
+        let mut path = env::home_dir().unwrap();
+        path.push("footy-cli/api_token");
+        let existing_token = File::open(path);
         if existing_token.is_ok() {
             let choice = Confirmation::new(
                 "An API token has previously been set, would you like to use that?",
